@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\project_breakartsGlobal\Assets\script\racing\racingManage.cs">
+    <Files>
+      <File FileName="..\..\project_breakartsGlobal\Assets\script\result\raceResult.cs" Line="111" Column="63" />
+      <File FileName="..\..\project_breakartsGlobal\Assets\script\racing\racingManage.cs" Line="478" Column="37" />
+      <File FileName="..\..\project_breakartsGlobal\Assets\script\UIscript\UISc.cs" Line="296" Column="46" />
+      <File FileName="..\..\project_breakartsGlobal\Assets\script\racing\raceNowRank.cs" Line="118" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
