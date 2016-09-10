@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon;
 
-public class manage : MonoBehaviour {
+public class manage : Photon.PunBehaviour {
 
 	private bool keyLock;
 
@@ -11,11 +12,13 @@ public class manage : MonoBehaviour {
 		PhotonNetwork.ConnectUsingSettings (null);
 	}
 
-	void OnJoinedLobby() {
+	public override void OnJoinedLobby() {
 		PhotonNetwork.JoinRandomRoom ();
 	}
 
-	void OnJoinedRoom() {
+	public override void OnJoinedRoom() {
+		base.OnJoinedRoom ();
+		Debug.Log ("In Room");
 		keyLock = true;
 	}
 
