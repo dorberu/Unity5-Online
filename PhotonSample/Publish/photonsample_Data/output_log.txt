@@ -1,0 +1,35 @@
+Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 460 (ID=0xe22)
+    Vendor:   NVIDIA
+    VRAM:     717 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.176 seconds
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonSample\Publish\photonsample_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 13.721941 ms
+SwitchToProtocol: Udp PhotonNetwork.connected: False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2bc8 -> priority: 1 
+  Thread -> id: 1898 -> priority: 1 
