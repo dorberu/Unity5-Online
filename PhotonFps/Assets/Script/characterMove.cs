@@ -11,6 +11,9 @@ public class characterMove : MonoBehaviour {
 	public PhotonView myPV;
 	public Camera myCam;
 
+	private bool isStandBy;
+	private float standByTimer;
+
 	// Use this for initialization
 	void Start () {
 		// 自分が積み込んだオブジェクトではない場合
@@ -18,15 +21,17 @@ public class characterMove : MonoBehaviour {
 			myRigid.isKinematic = true;
 			myCam.transform.gameObject.SetActive (false);
 			Destroy (this);
-		} else {
-			Debug.Log("x : " + myRigid.transform.position.x + "  y : " + myRigid.transform.position.y
-				+ "  m : " + myRigid.velocity.magnitude
-			);
 		}
+
+		// 準備中フェーズへ
+		StandBy ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		// 状態遷移
+		PhaseChange ();
+
 		if (!Application.isMobilePlatform) {
 			if (Input.GetKey (KeyCode.W)) {
 				variableManage.movingYaxis = 1;
@@ -58,5 +63,22 @@ public class characterMove : MonoBehaviour {
 				myRigid.angularVelocity = (myRigid.velocity.magnitude * 0.3f) * myRigid.angularVelocity.normalized;
 			}
 		}
+	}
+
+	void PhaseChange () {
+		if (isStandBy) {
+			if (standByTimer > 0.0f) {
+				standByTimer -= Time.deltaTime;
+			} else {
+				myRigid.constraints = RigidbodyConstraints.None;
+				isStandBy = false;
+			}
+		}
+	}
+
+	void StandBy () {
+		isStandBy = true;
+		standByTimer = 5.0f;
+		myRigid.constraints = RigidbodyConstraints.FreezeRotation;
 	}
 }
