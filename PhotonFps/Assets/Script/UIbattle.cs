@@ -55,38 +55,27 @@ public class UIbattle : MonoBehaviour {
 			touchStart = false;
 		}
 
-		if ((startXpos - currentXpos) < (Screen.width * -0.05f)) {
-			variableManage.movingXaxis = -1;
-		} else if ((startXpos - currentXpos) > (Screen.width * 0.05f)) {
-			variableManage.movingXaxis = 1;
-		} else {
-			variableManage.movingXaxis = 0;
-		}
+		// モバイル時のみ動作
+		if (Application.isMobilePlatform) {
+			if ((startXpos - currentXpos) < (Screen.width * -0.05f)) {
+				variableManage.movingXaxis = -1;
+			} else if ((startXpos - currentXpos) > (Screen.width * 0.05f)) {
+				variableManage.movingXaxis = 1;
+			} else {
+				variableManage.movingXaxis = 0;
+			}
 
-		if ((startYpos - currentYpos) < (Screen.height * -0.08f)) {
-			variableManage.movingYaxis = -1;
-		} else if ((startYpos - currentYpos) > (Screen.height * 0.08f)) {
-			variableManage.movingYaxis = 1;
-		} else {
-			variableManage.movingYaxis = 0;
-		}
-
-		// キーボード
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			variableManage.movingYaxis += 1;
-		}
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			variableManage.movingYaxis -= 1;
-		}
-		if (Input.GetKey(KeyCode.RightArrow)) {
-			variableManage.movingXaxis += 1;
-		}
-		if (Input.GetKey(KeyCode.LeftArrow)) {
-			variableManage.movingXaxis -= 1;
+			if ((startYpos - currentYpos) < (Screen.height * -0.08f)) {
+				variableManage.movingYaxis = -1;
+			} else if ((startYpos - currentYpos) > (Screen.height * 0.08f)) {
+				variableManage.movingYaxis = 1;
+			} else {
+				variableManage.movingYaxis = 0;
+			}
 		}
 
 		// Debug
-		infoText.text = "X : " + variableManage.movingXaxis + "  Y : " + variableManage.movingYaxis;
+		// infoText.text = "X : " + variableManage.movingXaxis + "  Y : " + variableManage.movingYaxis;
 	}
 
 	//コンフィグ表示用ボタン
