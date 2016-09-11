@@ -120,6 +120,8 @@
      <Compile Include="Assets\Script\UImainMenu.cs" />
      <Compile Include="Assets\Script\characterMove.cs" />
      <Compile Include="Assets\Script\gameManage.cs" />
+     <Compile Include="Assets\Script\mainShell.cs" />
+     <Compile Include="Assets\Script\weaponManage.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\Plugins\release_history.txt" />

@@ -18,6 +18,10 @@ public class characterMove : MonoBehaviour {
 			myRigid.isKinematic = true;
 			myCam.transform.gameObject.SetActive (false);
 			Destroy (this);
+		} else {
+			Debug.Log("x : " + myRigid.transform.position.x + "  y : " + myRigid.transform.position.y
+				+ "  m : " + myRigid.velocity.magnitude
+			);
 		}
 	}
 	

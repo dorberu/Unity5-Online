@@ -20,49 +20,19 @@ Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Pu
 Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.057 seconds
+- Completed reload, in  0.060 seconds
 Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.734991 ms
-Initialize engine version: 5.4.0f3 (a6d8d714de6f)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 460 (ID=0xe22)
-    Vendor:   NVIDIA
-    VRAM:     717 MB
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.057 seconds
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 0.706803 ms
+UnloadTime: 0.738471 ms
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.818685 ms
+UnloadTime: 5.603269 ms
 
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 729.
-Total: 0.447885 ms (FindLiveObjects: 0.033408 ms CreateObjectMapping: 0.025056 ms MarkObjects: 0.353227 ms  DeleteObjects: 0.035148 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 432.
+Total: 0.271097 ms (FindLiveObjects: 0.019836 ms CreateObjectMapping: 0.024360 ms MarkObjects: 0.198712 ms  DeleteObjects: 0.027840 ms)
 
 SwitchToProtocol: Udp PhotonNetwork.connected: False
  
@@ -78,21 +48,6 @@ Failed to Enter Room.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.577168 ms
-
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 729.
-Total: 0.435705 ms (FindLiveObjects: 0.057769 ms CreateObjectMapping: 0.068209 ms MarkObjects: 0.274925 ms  DeleteObjects: 0.034452 ms)
-
-SwitchToProtocol: Udp PhotonNetwork.connected: False
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.Configuration.dll (this message is harmless)
-Platform assembly: C:\Users\ymatsuda\Documents\GitHub\Unity5-Online\PhotonFps\Publish\photonfps_Data\Managed\System.Xml.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 244c -> priority: 1 
-  Thread -> id: 23dc -> priority: 1 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1e48 -> priority: 1 
-  Thread -> id: 2658 -> priority: 1 
+  Thread -> id: 1fa0 -> priority: 1 
+  Thread -> id: 16e4 -> priority: 1 

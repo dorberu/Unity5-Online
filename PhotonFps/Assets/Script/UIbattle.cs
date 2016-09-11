@@ -93,4 +93,8 @@ public class UIbattle : MonoBehaviour {
 		SceneManager.LoadScene ("mainMenu");
 	}
 
+	// 武器発射ボタン
+	public void fireWep () {
+		variableManage.fireWeapon = true;
+	}
 }
