@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class UIbattle : MonoBehaviour {
@@ -89,7 +90,7 @@ public class UIbattle : MonoBehaviour {
 
 	//メインメニューへ戻る
 	public void returnMainMenu(){
-		Application.LoadLevel("mainMenu");
+		SceneManager.LoadScene ("mainMenu");
 	}
 
 }

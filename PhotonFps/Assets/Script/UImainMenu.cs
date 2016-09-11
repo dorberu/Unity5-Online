@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class UImainMenu : MonoBehaviour {
@@ -24,7 +25,7 @@ public class UImainMenu : MonoBehaviour {
 	}
 
 	public void jumpBattleScene(){
-		Application.LoadLevel("battle");
+		SceneManager.LoadScene ("battle");
 	}
 
 }

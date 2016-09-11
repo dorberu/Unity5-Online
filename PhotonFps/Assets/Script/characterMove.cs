@@ -8,10 +8,17 @@ public class characterMove : MonoBehaviour {
 	public float basePower;
 
 	public Rigidbody myRigid;
+	public PhotonView myPV;
+	public Camera myCam;
 
 	// Use this for initialization
 	void Start () {
-	
+		// 自分が積み込んだオブジェクトではない場合
+		if (!myPV.isMine) {
+			myRigid.isKinematic = true;
+			myCam.transform.gameObject.SetActive (false);
+			Destroy (this);
+		}
 	}
 	
 	// Update is called once per frame
