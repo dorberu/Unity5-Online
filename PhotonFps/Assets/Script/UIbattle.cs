@@ -67,9 +67,9 @@ public class UIbattle : MonoBehaviour {
 			}
 
 			if ((startYpos - currentYpos) < (Screen.height * -0.08f)) {
-				variableManage.movingYaxis = -1;
-			} else if ((startYpos - currentYpos) > (Screen.height * 0.08f)) {
 				variableManage.movingYaxis = 1;
+			} else if ((startYpos - currentYpos) > (Screen.height * 0.08f)) {
+				variableManage.movingYaxis = -1;
 			} else {
 				variableManage.movingYaxis = 0;
 			}
