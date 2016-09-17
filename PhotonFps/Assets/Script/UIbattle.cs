@@ -75,6 +75,8 @@ public class UIbattle : MonoBehaviour {
 			}
 		}
 
+		healthText.text = "HP:" + variableManage.currentHealth;
+
 		// Debug
 		// infoText.text = "X : " + variableManage.movingXaxis + "  Y : " + variableManage.movingYaxis;
 	}

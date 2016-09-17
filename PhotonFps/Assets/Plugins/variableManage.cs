@@ -8,6 +8,8 @@ public class variableManage : MonoBehaviour {
 	static public bool fireWeapon;
 	static public GameObject lockonTarget;
 	static public bool lockoned;
+	static public float currentHealth;
+	static public bool controlLock;
 
 	// Use this for initialization
 	void Start () {
@@ -19,5 +21,7 @@ public class variableManage : MonoBehaviour {
 		movingYaxis = 0;
 		fireWeapon = false;
 		lockoned = false;
+		controlLock = false;
+		currentHealth = 10f;
 	}
 }

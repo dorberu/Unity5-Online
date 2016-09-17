@@ -27,7 +27,7 @@ public class weaponManage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (myPV.isMine) {
+		if (myPV.isMine && !variableManage.controlLock) {
 			// Lキーで武器発射
 			if (Input.GetKeyDown(KeyCode.L)) {
 				variableManage.fireWeapon = true;
