@@ -71,7 +71,7 @@ public class weaponManage : MonoBehaviour {
 			}
 
 			// 機体をロックオン対象へと向かせる
-			if (variableManage.lockoned) {
+			if (variableManage.lockoned && variableManage.lockonTarget != null) {
 				Vector3 tf = this.transform.TransformDirection (Vector3.forward);
 				Vector3 tf2 = yRotObject.transform.TransformDirection (Vector3.forward);
 
