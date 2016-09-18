@@ -99,7 +99,7 @@ public class weaponManage : MonoBehaviour {
 				                 );
 				float xAngl = Vector2.Angle (new Vector2 (tf2.y, tf2.z), (targetXpos - myXpos));
 				Vector3 tu = this.transform.TransformDirection (Vector3.up);
-				float xDot = Vector2.Dot (new Vector2 (tr.y, tr.z).normalized, (targetXpos - myXpos).normalized);
+				float xDot = Vector2.Dot (new Vector2 (tu.y, tu.z).normalized, (targetXpos - myXpos).normalized);
 
 				// 角度制限および左右計算
 				if (yAngl > 80.0f) {
