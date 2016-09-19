@@ -55,7 +55,7 @@ public class weaponManage : MonoBehaviour {
 			lockCalcTimer += Time.deltaTime;
 			if (lockCalcTimer > 0.5f) {
 				lockCalcTimer = 0.0f;
-				GameObject[] allEnemy = GameObject.FindGameObjectsWithTag ("Player");
+				GameObject[] allEnemy = GameObject.FindGameObjectsWithTag ("enemy");
 				variableManage.lockoned = false;
 				float bestDist = 9999.0f;
 				foreach (GameObject obj in allEnemy) {

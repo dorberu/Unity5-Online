@@ -13,6 +13,8 @@ public class gameManage : Photon.PunBehaviour {
 	public int myTeamID;
 	private float tagTimer;
 	private bool loadOnce;
+	// スタート地点用
+	private Vector2 myStartPos;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,16 @@ public class gameManage : Photon.PunBehaviour {
 		tagTimer = 0.0f;
 		// Photon RealTimeのサーバへ接続（ロビーへ入室）
 		PhotonNetwork.ConnectUsingSettings (null);
+
+		// スタート地点計算
+		Vector2 rndPos = Vector2.zero;
+		while (true) {
+			rndPos = Random.insideUnitCircle * 150.0f;
+			if (rndPos.x < -20.0f && rndPos.y > 20.0f) {
+				break;
+			}
+		}
+		myStartPos = new Vector2 ((592.0f + rndPos.x), (-592.0f + rndPos.y));
 	}
 	
 	// Update is called once per frame
@@ -31,9 +43,12 @@ public class gameManage : Photon.PunBehaviour {
 		if (PhotonNetwork.inRoom) {
 			if (!loadOnce && myTeamID != 0) {
 				loadOnce = true;
+				if (myTeamID == 2) {
+					myStartPos = myStartPos * -1.0f;
+				}
 				GameObject myPlayer = PhotonNetwork.Instantiate (
 					"character/t01",
-					new Vector3 (440.0f, 30.0f, -560.0f),
+					new Vector3 (myStartPos.x, 24.0f, myStartPos.y),
 					Quaternion.identity, 0);
 				myPlayer.transform.LookAt (Vector3.zero);
 				variableManage.myTeamID = myTeamID;
