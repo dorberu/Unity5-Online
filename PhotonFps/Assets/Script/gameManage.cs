@@ -64,7 +64,6 @@ public class gameManage : Photon.PunBehaviour {
 
 	public override void OnJoinedLobby () {
 		PhotonNetwork.JoinRandomRoom ();
-		Debug.Log ("OnJoinedLobby End.");
 	}
 		
 	public override void OnFailedToConnectToPhoton (DisconnectCause cause) {
@@ -88,7 +87,6 @@ public class gameManage : Photon.PunBehaviour {
 
 	public override void OnJoinedRoom () {
 		base.OnJoinedRoom ();
-		Debug.Log ("OnJoinedRoom End.");
 	}
 
 	public override void OnConnectionFail (DisconnectCause cause) {
@@ -99,7 +97,7 @@ public class gameManage : Photon.PunBehaviour {
 
 	// ルームに誰か別のプレイヤーが入室したとき
 	public override void OnPhotonPlayerConnected (PhotonPlayer newPlayer) {
-		Debug.Log ("OnPhotonPlayerConnected.");
+		Debug.Log ("Player Connected");
 		if (PhotonNetwork.isMasterClient) {
 			// メンバー振り分け処理
 			int allocateNumber = 0;
@@ -113,10 +111,10 @@ public class gameManage : Photon.PunBehaviour {
 				}
 				scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 			} else {
-				if (myTeamID == 2) {
-					allocateNumber = 2;
-				} else {
+				if (myTeamID == 1) {
 					allocateNumber = 1;
+				} else {
+					allocateNumber = 2;
 				}
 				scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 			}

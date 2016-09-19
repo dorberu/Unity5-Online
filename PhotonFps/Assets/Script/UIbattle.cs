@@ -77,6 +77,10 @@ public class UIbattle : MonoBehaviour {
 
 		healthText.text = "HP:" + variableManage.currentHealth;
 
+		if (Input.GetKeyDown (KeyCode.M)) {
+			showMap ();
+		}
+
 		// Debug
 		// infoText.text = "X : " + variableManage.movingXaxis + "  Y : " + variableManage.movingYaxis;
 	}
@@ -98,5 +102,16 @@ public class UIbattle : MonoBehaviour {
 	// 武器発射ボタン
 	public void fireWep () {
 		variableManage.fireWeapon = true;
+	}
+
+	// マップ表示切替ボタン
+	public void showMap () {
+		if (variableManage.mapEnabled) {
+			mapUIobj.SetActive (false);
+			variableManage.mapEnabled = false;
+		} else {
+			mapUIobj.SetActive (true);
+			variableManage.mapEnabled = true;
+		}
 	}
 }

@@ -10,7 +10,8 @@ public class variableManage : MonoBehaviour {
 	static public bool lockoned;
 	static public float currentHealth;
 	static public bool controlLock;
-	static public int myTeamID;
+	static public int myTeamID = 0;
+	static public bool mapEnabled;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +24,7 @@ public class variableManage : MonoBehaviour {
 		fireWeapon = false;
 		lockoned = false;
 		controlLock = false;
-		myTeamID = 0;
+		mapEnabled = false;
 		currentHealth = 10f;
 	}
 }
