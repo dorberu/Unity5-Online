@@ -55,9 +55,9 @@ public class gameManage : Photon.PunBehaviour {
 		if (PhotonNetwork.inRoom) {
 			if (!loadOnce && myTeamID != 0) {
 				loadOnce = true;
-				if (myTeamID == 2) {
-					myStartPos = myStartPos * -1.0f;
-				}
+//				if (myTeamID == 2) {
+//					myStartPos = myStartPos * -1.0f;
+//				}
 				GameObject myPlayer = PhotonNetwork.Instantiate (
 					"character/t01",
 					new Vector3 (myStartPos.x, 24.0f, myStartPos.y),
@@ -98,6 +98,27 @@ public class gameManage : Photon.PunBehaviour {
 			} else {
 				sendOnce = false;
 			}
+
+			// マスタークライアントで拠点が攻撃された場合、全クライアントへ送信
+			if (PhotonNetwork.isMasterClient) {
+				// 拠点１の耐久力を減らす
+				if (variableManage.team1baseBullet != null) {
+					bc1tmp -= variableManage.team1baseBullet.GetComponent<mainShell> ().pow;
+					if (bc1tmp < 0.0f) {
+						bc1tmp = 0.0f;
+					}
+					variableManage.team1baseBullet = null;
+				}
+				// 拠点２の耐久力を減らす
+				if (variableManage.team2baseBullet != null) {
+					bc2tmp -= variableManage.team2baseBullet.GetComponent<mainShell> ().pow;
+					if (bc2tmp < 0.0f) {
+						bc2tmp = 0.0f;
+					}
+					variableManage.team2baseBullet = null;
+				}
+			}
+
 			// 勝敗を確定
 			if(PhotonNetwork.isMasterClient && !variableManage.finishedGame) {
 				if (variableManage.team1Rest <= 0
@@ -246,7 +267,7 @@ public class gameManage : Photon.PunBehaviour {
 		variableManage.team1Rest = tc1;
 		variableManage.team2Rest = tc2;
 		variableManage.base1Rest = bc1;
-		variableManage.base1Rest = bc2;
+		variableManage.base2Rest = bc2;
 	}
 
 	// ゲーム終了を通知する

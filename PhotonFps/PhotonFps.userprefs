@@ -2,11 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\gameManage.cs">
     <Files>
-      <File FileName="Assets\Script\UIbattle.cs" Line="87" Column="5" />
-      <File FileName="Assets\Script\UImainMenu.cs" Line="28" Column="40" />
-      <File FileName="Assets\Script\characterMove.cs" Line="150" Column="2" />
-      <File FileName="Assets\Plugins\variableManage.cs" Line="41" Column="16" />
-      <File FileName="Assets\Script\gameManage.cs" Line="57" Column="21" />
+      <File FileName="Assets\Script\gameManage.cs" Line="109" Column="7" />
+      <File FileName="Assets\Plugins\variableManage.cs" Line="44" Column="19" />
+      <File FileName="Assets\Script\baseStatus.cs" Line="10" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

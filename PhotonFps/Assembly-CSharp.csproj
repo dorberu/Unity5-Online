@@ -119,6 +119,7 @@
      <Compile Include="Assets\Script\UIbattle.cs" />
      <Compile Include="Assets\Script\UImainMenu.cs" />
      <Compile Include="Assets\Script\animController.cs" />
+     <Compile Include="Assets\Script\baseStatus.cs" />
      <Compile Include="Assets\Script\characterMove.cs" />
      <Compile Include="Assets\Script\characterStatus.cs" />
      <Compile Include="Assets\Script\gameManage.cs" />
