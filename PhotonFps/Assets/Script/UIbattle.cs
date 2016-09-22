@@ -17,6 +17,9 @@ public class UIbattle : MonoBehaviour {
 	//オブジェクト格納
 	public GameObject returnMenu;
 	public GameObject mapUIobj;
+	public GameObject winLoseBase;
+	public GameObject winText;
+	public GameObject loseText;
 	// 仮想操作パッド関連
 	private float currentXpos;
 	private float currentYpos;
@@ -75,7 +78,24 @@ public class UIbattle : MonoBehaviour {
 			}
 		}
 
+		// 勝敗用
+		if (variableManage.finishedGame) {
+			if (variableManage.myTeamID == variableManage.gameResult) {
+				winText.SetActive (true);
+			} else {
+				loseText.SetActive (true);
+			}
+			winLoseBase.SetActive (true);
+		}
+
 		healthText.text = "HP:" + variableManage.currentHealth;
+		if (variableManage.myTeamID == 1) {
+			blueTeamText.text = "D" + variableManage.team1Rest + "_L" + variableManage.base1Rest;
+			redTeamText.text = "D" + variableManage.team2Rest + "_L" + variableManage.base2Rest;
+		} else {
+			blueTeamText.text = "D" + variableManage.team2Rest + "_L" + variableManage.base2Rest;
+			redTeamText.text = "D" + variableManage.team1Rest + "_L" + variableManage.base1Rest;
+		}
 
 		if (Input.GetKeyDown (KeyCode.M)) {
 			showMap ();

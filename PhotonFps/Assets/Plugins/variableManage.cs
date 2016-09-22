@@ -13,6 +13,15 @@ public class variableManage : MonoBehaviour {
 	static public int myTeamID = 0;
 	static public bool mapEnabled;
 
+	// 勝敗用判定
+	static public bool finishedGame = false;	// 勝敗が確定されたか
+	static public int team1Rest = 2;			// チーム１の残り撃破数
+	static public int team2Rest = 2;			// チーム２の残り撃破数
+	static public float base1Rest = 99999.0f;	// チーム１の拠点の残りHP
+	static public float base2Rest = 99999.0f;	// チーム２の拠点の残りHP
+	static public float timeRest = 400.0f;		// ゲームの残り時間
+	static public int gameResult = 0;			// 勝利チームID
+
 	// Use this for initialization
 	void Start () {
 		initializeVariable ();
@@ -26,5 +35,13 @@ public class variableManage : MonoBehaviour {
 		controlLock = false;
 		mapEnabled = false;
 		currentHealth = 10f;
+		// 勝敗用
+		finishedGame = false;
+		team1Rest = 2;
+		team2Rest = 2;
+		base1Rest = 99999.0f;
+		base2Rest = 99999.0f;
+		timeRest = 400.0f;
+		gameResult = 0;
 	}
 }
