@@ -55,9 +55,9 @@ public class gameManage : Photon.PunBehaviour {
 		if (PhotonNetwork.inRoom) {
 			if (!loadOnce && myTeamID != 0) {
 				loadOnce = true;
-//				if (myTeamID == 2) {
-//					myStartPos = myStartPos * -1.0f;
-//				}
+				if (myTeamID == 2) {
+					myStartPos = myStartPos * -1.0f;
+				}
 				GameObject myPlayer = PhotonNetwork.Instantiate (
 					"character/t01",
 					new Vector3 (myStartPos.x, 24.0f, myStartPos.y),

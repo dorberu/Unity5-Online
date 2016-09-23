@@ -106,13 +106,13 @@ public class weaponManage : MonoBehaviour {
 					yAngl = 80.0f;
 				}
 				if (yDot < 0.0f) {
-					yDot = yAngl * -1.0f;
+					yAngl = yAngl * -1.0f;
 				}
 				if (xAngl > 12.0f) {
 					xAngl = 12.0f;
 				}
 				if (xDot < 0.0f) {
-					xDot = xAngl * -1.0f;
+					xAngl = xAngl * -1.0f;
 				}
 
 				// 角度適用
