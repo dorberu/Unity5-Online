@@ -10,23 +10,22 @@ public class variableManage : MonoBehaviour {
 	static public bool lockoned;
 	static public float currentHealth;
 	static public bool controlLock;
-	static public int myTeamID = 0;
+	static public int myTeamID;
 	static public bool mapEnabled;
 	static public GameObject team1baseBullet;
 	static public GameObject team2baseBullet;
 
 	// 勝敗用判定
-	static public bool finishedGame = false;	// 勝敗が確定されたか
-	static public int team1Rest = 2;			// チーム１の残り撃破数
-	static public int team2Rest = 2;			// チーム２の残り撃破数
-	static public float base1Rest = 9999.0f;	// チーム１の拠点の残りHP
-	static public float base2Rest = 9999.0f;	// チーム２の拠点の残りHP
-	static public float timeRest = 400.0f;		// ゲームの残り時間
-	static public int gameResult = 0;			// 勝利チームID
+	static public bool finishedGame;	// 勝敗が確定されたか
+	static public int team1Rest;			// チーム１の残り撃破数
+	static public int team2Rest;			// チーム２の残り撃破数
+	static public float base1Rest;	// チーム１の拠点の残りHP
+	static public float base2Rest;	// チーム２の拠点の残りHP
+	static public float timeRest;		// ゲームの残り時間
+	static public int gameResult;			// 勝利チームID
 
 	// Use this for initialization
 	void Start () {
-		initializeVariable ();
 	}
 	
 	static public void initializeVariable () {
@@ -35,6 +34,7 @@ public class variableManage : MonoBehaviour {
 		fireWeapon = false;
 		lockoned = false;
 		controlLock = false;
+		myTeamID = 0;
 		mapEnabled = false;
 		currentHealth = 10f;
 		// 勝敗用
@@ -43,6 +43,7 @@ public class variableManage : MonoBehaviour {
 		team2Rest = 2;
 		base1Rest = 9999.0f;
 		base2Rest = 9999.0f;
+		timeRest = 400.0f;
 		gameResult = 0;
 	}
 }
