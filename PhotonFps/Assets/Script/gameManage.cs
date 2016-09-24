@@ -13,6 +13,7 @@ public class gameManage : Photon.PunBehaviour {
 	public int myTeamID;
 	private float tagTimer;
 	private bool loadOnce;
+	private float shiftTimer;
 	// スタート地点用
 	private Vector2 myStartPos;
 	// 勝敗情報用
@@ -40,6 +41,7 @@ public class gameManage : Photon.PunBehaviour {
 		standardTime = "";
 		serverTime = "";
 		countStart = false;
+		shiftTimer = 0.0f;
 
 		// Photon RealTimeのサーバへ接続（ロビーへ入室）
 		PhotonNetwork.ConnectUsingSettings (null);
@@ -221,6 +223,15 @@ public class gameManage : Photon.PunBehaviour {
 				variableManage.timeRest -= Time.deltaTime;
 				if (variableManage.timeRest < 0) {
 					variableManage.timeRest = 0;
+				}
+			}
+			// 決着後、メインメニューへ移動
+			if (variableManage.finishedGame && variableManage.gameResult != 0) {
+				shiftTimer += Time.deltaTime;
+				// 5秒後に移動
+				if (shiftTimer > 5.0f) {
+					PhotonNetwork.Disconnect ();
+					SceneManager.LoadScene ("mainMenu");
 				}
 			}
 		}
