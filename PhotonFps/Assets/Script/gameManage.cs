@@ -117,11 +117,15 @@ public class gameManage : Photon.PunBehaviour {
 				}
 			}
 			// 撃破されたとき、マスタークライアントへ情報を送信
+			// 撃破されたおき、全プレイヤーに情報を送信しメッセージを表示
 			if (variableManage.currentHealth <= 0.0f) {
 				if (!sendOnce) {
 					sendOnce = true;
 					scenePV.RPC ("sendDestruction",
 						PhotonNetwork.masterClient,
+						variableManage.myTeamID);
+					scenePV.RPC ("sendDestructionAll",
+						PhotonTargets.All,
 						variableManage.myTeamID);
 				}
 			} else {
@@ -337,6 +341,16 @@ public class gameManage : Photon.PunBehaviour {
 			if (tc2tmp < 0) {
 				tc2tmp = 0;
 			}
+		}
+	}
+
+	// 自分が撃破されたことを全プレイヤーに送信する
+	[PunRPC]
+	void sendDestructionAll (int tID) {
+		if (myTeamID == tID) {
+			variableManage.informationMessage = 1;
+		} else {
+			variableManage.informationMessage = 2;
 		}
 	}
 

@@ -24,6 +24,9 @@ public class variableManage : MonoBehaviour {
 	static public float timeRest;		// ゲームの残り時間
 	static public int gameResult;			// 勝利チームID
 
+	// 画面表示用変数
+	static public int informationMessage;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -45,5 +48,6 @@ public class variableManage : MonoBehaviour {
 		base2Rest = 9999.0f;
 		timeRest = 400.0f;
 		gameResult = 0;
+		informationMessage = 0;
 	}
 }

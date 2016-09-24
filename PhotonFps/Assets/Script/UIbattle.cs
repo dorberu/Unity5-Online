@@ -26,11 +26,15 @@ public class UIbattle : MonoBehaviour {
 	private float startXpos;
 	private float startYpos;
 	private bool touchStart;
+	// その他
+	private float messageTimer;
 
 	void Start () {
 		currentXpos = 0.0f;
 		currentYpos = 0.0f;
 		touchStart = false;
+		messageTimer = 0.0f;
+		infoText.text = "";
 	}
 	
 
@@ -75,6 +79,24 @@ public class UIbattle : MonoBehaviour {
 				variableManage.movingYaxis = -1;
 			} else {
 				variableManage.movingYaxis = 0;
+			}
+		}
+
+		// 画面表示（メッセージ）
+		if (variableManage.informationMessage != 0) {
+			if (variableManage.informationMessage == 1) {
+				infoText.text = "味方が撃破されました";
+			} else if (variableManage.informationMessage == 2) {
+				infoText.text = "敵を撃破しました";
+			}
+			variableManage.informationMessage = 0;
+			messageTimer = 3.0f;
+		}
+		if (messageTimer > 0.0f) {
+			// 3秒後にメッセージを削除
+			messageTimer -= Time.deltaTime;
+			if (messageTimer <= 0.0f) {
+				infoText.text = "";
 			}
 		}
 
