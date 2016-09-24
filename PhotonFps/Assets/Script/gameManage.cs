@@ -21,6 +21,9 @@ public class gameManage : Photon.PunBehaviour {
 	private float bc1tmp;
 	private float bc2tmp;
 	private bool sendOnce;
+	private string standardTime;
+	private string serverTime;
+	private bool countStart;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +37,9 @@ public class gameManage : Photon.PunBehaviour {
 		tc2tmp = variableManage.team2Rest;
 		bc1tmp = variableManage.base1Rest;
 		bc2tmp = variableManage.base2Rest;
+		standardTime = "";
+		serverTime = "";
+		countStart = false;
 
 		// Photon RealTimeのサーバへ接続（ロビーへ入室）
 		PhotonNetwork.ConnectUsingSettings (null);
@@ -53,6 +59,29 @@ public class gameManage : Photon.PunBehaviour {
 	void Update () {
 		// ルームに入室が完了していたら
 		if (PhotonNetwork.inRoom) {
+			// ルームのカスタムプロパティへ基準時間を設定
+			if (PhotonNetwork.isMasterClient && !countStart) {
+				myRoomHash ["time"] = PhotonNetwork.time.ToString ();
+				PhotonNetwork.room.SetCustomProperties (myRoomHash);
+				countStart = true;
+			} else if (!countStart) {
+				// ルームの基準時間を取得
+				if (standardTime == "" && standardTime != "0") {
+					standardTime = PhotonNetwork.room.customProperties ["time"].ToString ();
+				}
+				// 現在の基準時間を取得
+				if (serverTime == "" && serverTime != "0") {
+					serverTime = PhotonNetwork.time.ToString ();
+				}
+				// 時間を比較し、残り時間を算出
+				if (standardTime != "" && standardTime != "0" && serverTime != "" && serverTime != "0") {
+					float svT = float.Parse (double.Parse (serverTime).ToString ());
+					float stT = float.Parse (double.Parse (standardTime).ToString ());
+					variableManage.timeRest = variableManage.timeRest - Mathf.Round (svT - stT);
+					countStart = true;
+				}
+			}
+
 			if (!loadOnce && myTeamID != 0) {
 				loadOnce = true;
 				if (myTeamID == 2) {
@@ -138,6 +167,56 @@ public class gameManage : Photon.PunBehaviour {
 						PhotonTargets.Others,
 						variableManage.gameResult
 					);
+				}
+				// 時間切れによる決着　より撃破数が多い方が勝ち
+				// 引き分けの場合は耐久力の多い方が勝ち
+				// それでも引き分けの場合はチーム１の勝ち
+				if (variableManage.timeRest <= 0) {
+					if (variableManage.team1Rest > variableManage.team2Rest) {
+						// t1 win
+						variableManage.finishedGame = true;
+						variableManage.gameResult = 1;
+						scenePV.RPC (
+							"stncFinished",
+							PhotonTargets.Others,
+							variableManage.gameResult
+						);
+					} else if (variableManage.team1Rest < variableManage.team2Rest) {
+						// t2 win
+						variableManage.finishedGame = true;
+						variableManage.gameResult = 2;
+						scenePV.RPC (
+							"stncFinished",
+							PhotonTargets.Others,
+							variableManage.gameResult
+						);
+					} else {
+						// draw
+						if (variableManage.base1Rest >= variableManage.base2Rest) {
+							variableManage.finishedGame = true;
+							variableManage.gameResult = 1;
+							scenePV.RPC (
+								"stncFinished",
+								PhotonTargets.Others,
+								variableManage.gameResult
+							);
+						} else {
+							variableManage.finishedGame = true;
+							variableManage.gameResult = 2;
+							scenePV.RPC (
+								"stncFinished",
+								PhotonTargets.Others,
+								variableManage.gameResult
+							);
+						}
+					}
+				}
+			}
+			// 時間経過
+			if (countStart) {
+				variableManage.timeRest -= Time.deltaTime;
+				if (variableManage.timeRest < 0) {
+					variableManage.timeRest = 0;
 				}
 			}
 		}

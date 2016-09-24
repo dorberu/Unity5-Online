@@ -89,6 +89,7 @@ public class UIbattle : MonoBehaviour {
 		}
 
 		healthText.text = "HP:" + variableManage.currentHealth;
+		timerText.text = Mathf.Round (variableManage.timeRest).ToString ();
 		if (variableManage.myTeamID == 1) {
 			blueTeamText.text = "D" + variableManage.team1Rest + "_L" + variableManage.base1Rest;
 			redTeamText.text = "D" + variableManage.team2Rest + "_L" + variableManage.base2Rest;

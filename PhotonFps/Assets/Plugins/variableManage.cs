@@ -43,7 +43,6 @@ public class variableManage : MonoBehaviour {
 		team2Rest = 2;
 		base1Rest = 9999.0f;
 		base2Rest = 9999.0f;
-		timeRest = 400.0f;
 		gameResult = 0;
 	}
 }
