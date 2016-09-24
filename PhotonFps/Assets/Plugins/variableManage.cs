@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class variableManage : MonoBehaviour {
-
+	// ゲーム管理用変数
 	static public int movingXaxis;
 	static public int movingYaxis;
 	static public bool fireWeapon;
@@ -14,7 +14,7 @@ public class variableManage : MonoBehaviour {
 	static public bool mapEnabled;
 	static public GameObject team1baseBullet;
 	static public GameObject team2baseBullet;
-
+	static public float startTime;
 	// 勝敗用判定
 	static public bool finishedGame;	// 勝敗が確定されたか
 	static public int team1Rest;			// チーム１の残り撃破数
@@ -23,9 +23,13 @@ public class variableManage : MonoBehaviour {
 	static public float base2Rest;	// チーム２の拠点の残りHP
 	static public float timeRest;		// ゲームの残り時間
 	static public int gameResult;			// 勝利チームID
-
 	// 画面表示用変数
 	static public int informationMessage;
+	// プレイヤーの情報
+	static public int currentExp = 0;
+	static public int nextExp = 100;
+	static public int currentLv = 1;
+	static public bool showLvupMes = false;
 
 	// Use this for initialization
 	void Start () {

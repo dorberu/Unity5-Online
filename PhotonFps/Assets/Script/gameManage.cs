@@ -65,6 +65,7 @@ public class gameManage : Photon.PunBehaviour {
 			if (PhotonNetwork.isMasterClient && !countStart) {
 				myRoomHash ["time"] = PhotonNetwork.time.ToString ();
 				PhotonNetwork.room.SetCustomProperties (myRoomHash);
+				variableManage.startTime = variableManage.timeRest;
 				countStart = true;
 			} else if (!countStart) {
 				// ルームの基準時間を取得
@@ -80,6 +81,7 @@ public class gameManage : Photon.PunBehaviour {
 					float svT = float.Parse (double.Parse (serverTime).ToString ());
 					float stT = float.Parse (double.Parse (standardTime).ToString ());
 					variableManage.timeRest = variableManage.timeRest - Mathf.Round (svT - stT);
+					variableManage.startTime = variableManage.timeRest;
 					countStart = true;
 				}
 			}
@@ -230,6 +232,15 @@ public class gameManage : Photon.PunBehaviour {
 				shiftTimer += Time.deltaTime;
 				// 5秒後に移動
 				if (shiftTimer > 5.0f) {
+					shiftTimer = 0.0f;
+					// 経験値計算
+					if (variableManage.myTeamID == variableManage.gameResult) {
+						// 自分のチームが勝利
+						variableManage.currentExp += Mathf.RoundToInt (variableManage.startTime * 0.4f);
+					} else {
+						// 自分のチームが敗北
+						variableManage.currentExp += Mathf.RoundToInt (variableManage.startTime * 0.15f);
+					}
 					PhotonNetwork.Disconnect ();
 					SceneManager.LoadScene ("mainMenu");
 				}

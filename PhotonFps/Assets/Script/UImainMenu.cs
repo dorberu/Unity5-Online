@@ -14,14 +14,31 @@ public class UImainMenu : MonoBehaviour {
 	//オブジェクト関連
 	public GameObject unlockBtnObj;
 	public GameObject lvupObj;
+	// レベルアップメッセージ用
+	private float mesTimer;
 
 	void Start () {
-	
+		mesTimer = 0.0f;
 	}
 	
 
 	void Update () {
-	
+		// 画面表示
+		lvupNum.text = variableManage.currentLv.ToString ();
+		playerStatusText.text = "PlayerClass : " + variableManage.currentLv +
+			" NextClass : " + variableManage.currentExp +
+			" / " + variableManage.nextExp;
+		// レベルアップメッセージ
+		if (variableManage.showLvupMes) {
+			if (mesTimer == 0.0f) {
+				lvupObj.SetActive (true);
+			} else if (mesTimer > 3.0f) {
+				mesTimer = 0.0f;
+				variableManage.showLvupMes = false;
+				lvupObj.SetActive (false);
+			}
+			mesTimer += Time.deltaTime;
+		}
 	}
 
 	public void jumpBattleScene(){
