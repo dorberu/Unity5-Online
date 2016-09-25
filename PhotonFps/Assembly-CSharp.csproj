@@ -118,6 +118,7 @@
      <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+     <Compile Include="Assets\Script\KiiManage.cs" />
      <Compile Include="Assets\Script\UIbattle.cs" />
      <Compile Include="Assets\Script\UImainMenu.cs" />
      <Compile Include="Assets\Script\animController.cs" />

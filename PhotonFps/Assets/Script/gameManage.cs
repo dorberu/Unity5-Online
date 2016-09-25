@@ -241,6 +241,11 @@ public class gameManage : Photon.PunBehaviour {
 						// 自分のチームが敗北
 						variableManage.currentExp += Mathf.RoundToInt (variableManage.startTime * 0.15f);
 					}
+					// データを保存してシーン移動
+					bool svChk = KiiManage.saveKiiData ();
+					if (!svChk) {
+						svChk = KiiManage.saveKiiData ();
+					}
 					PhotonNetwork.Disconnect ();
 					SceneManager.LoadScene ("mainMenu");
 				}
