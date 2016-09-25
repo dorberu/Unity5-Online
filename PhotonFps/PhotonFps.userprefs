@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\KiiManage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\gameManage.cs">
     <Files>
       <File FileName="Assets\Script\UImainMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\gameManage.cs" Line="247" Column="40" />
-      <File FileName="Assets\Plugins\variableManage.cs" Line="34" Column="43" />
-      <File FileName="Assets\Script\UIbattle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\gameManage.cs" Line="345" Column="17" />
+      <File FileName="Assets\Plugins\variableManage.cs" Line="59" Column="22" />
+      <File FileName="Assets\Script\UIbattle.cs" Line="142" Column="31" />
       <File FileName="Assets\Script\mainMenuManage.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\KiiManage.cs" Line="86" Column="1" />
     </Files>

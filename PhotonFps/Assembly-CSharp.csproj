@@ -147,11 +147,8 @@
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Plugins/Photon3Unity3D.dll</HintPath>
- </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <Reference Include="JsonOrg">
+ <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Kii/Libs/JsonOrg.dll</HintPath>
  </Reference>
  <Reference Include="KiiCloudStorageSDK">
  <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Kii/Libs/KiiCloudStorageSDK.dll</HintPath>
@@ -159,8 +156,11 @@
  <Reference Include="KiiCloudUnitySDK">
  <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Kii/Libs/KiiCloudUnitySDK.dll</HintPath>
  </Reference>
- <Reference Include="JsonOrg">
- <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Kii/Libs/JsonOrg.dll</HintPath>
+ <Reference Include="Photon3Unity3D">
+ <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>C:/Users/ymatsuda/Documents/GitHub/Unity5-Online/PhotonFps/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

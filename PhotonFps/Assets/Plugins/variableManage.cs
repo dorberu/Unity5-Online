@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class variableManage : MonoBehaviour {
+
+	public const float MAX_TIME = 400.0f;
+
 	// ゲーム管理用変数
 	static public int movingXaxis;
 	static public int movingYaxis;
@@ -32,6 +35,7 @@ public class variableManage : MonoBehaviour {
 	static public bool showLvupMes = false;
 	static public bool openMachine02 = false;
 	static public bool openMachine03 = false;
+	static public int myWP = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -52,7 +56,7 @@ public class variableManage : MonoBehaviour {
 		team2Rest = 2;
 		base1Rest = 9999.0f;
 		base2Rest = 9999.0f;
-		timeRest = 400.0f;
+		timeRest = MAX_TIME;
 		gameResult = 0;
 		informationMessage = 0;
 	}

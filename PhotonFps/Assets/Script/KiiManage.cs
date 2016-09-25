@@ -148,6 +148,7 @@ public class KiiManage : MonoBehaviour {
 				variableManage.currentExp = (int)obj["exp"];
 				variableManage.openMachine02 = (bool)obj["open2"];
 				variableManage.openMachine03 = (bool)obj["open3"];
+				variableManage.myWP = (int)obj["wp"];
 			}
 		} catch (System.Exception e) {
 			Debug.Log (e);
@@ -168,6 +169,7 @@ public class KiiManage : MonoBehaviour {
 				obj["exp"] = variableManage.currentExp;
 				obj["open2"] = variableManage.openMachine02;
 				obj["open3"] = variableManage.openMachine03;
+				obj["wp"] = variableManage.myWP;
 				obj.Save ();
 			}
 		} catch (System.Exception e) {

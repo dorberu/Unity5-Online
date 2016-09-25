@@ -138,20 +138,24 @@ public class gameManage : Photon.PunBehaviour {
 
 			// マスタークライアントで拠点が攻撃された場合、全クライアントへ送信
 			if (PhotonNetwork.isMasterClient) {
-				// 拠点１の耐久力を減らす
-				if (variableManage.team1baseBullet != null) {
-					bc1tmp -= variableManage.team1baseBullet.GetComponent<mainShell> ().pow;
-					if (bc1tmp < 0.0f) {
-						bc1tmp = 0.0f;
+				if (PhotonNetwork.room.playerCount > 1) {
+					// 拠点１の耐久力を減らす
+					if (variableManage.team1baseBullet != null) {
+						bc1tmp -= variableManage.team1baseBullet.GetComponent<mainShell> ().pow;
+						if (bc1tmp < 0.0f) {
+							bc1tmp = 0.0f;
+						}
+						variableManage.team1baseBullet = null;
 					}
-					variableManage.team1baseBullet = null;
-				}
-				// 拠点２の耐久力を減らす
-				if (variableManage.team2baseBullet != null) {
-					bc2tmp -= variableManage.team2baseBullet.GetComponent<mainShell> ().pow;
-					if (bc2tmp < 0.0f) {
-						bc2tmp = 0.0f;
+					// 拠点２の耐久力を減らす
+					if (variableManage.team2baseBullet != null) {
+						bc2tmp -= variableManage.team2baseBullet.GetComponent<mainShell> ().pow;
+						if (bc2tmp < 0.0f) {
+							bc2tmp = 0.0f;
+						}
+						variableManage.team2baseBullet = null;
 					}
+				} else {
 					variableManage.team2baseBullet = null;
 				}
 			}
@@ -227,9 +231,19 @@ public class gameManage : Photon.PunBehaviour {
 					variableManage.timeRest = 0;
 				}
 			}
+			// ゲーム開始５秒後、ルームを開放する
+			if (variableManage.timeRest < (variableManage.MAX_TIME - 5.0f)) {
+				if (!PhotonNetwork.room.open) {
+					PhotonNetwork.room.open = true;
+					PhotonNetwork.room.visible = true;
+				}
+			}
 			// 決着後、メインメニューへ移動
 			if (variableManage.finishedGame && variableManage.gameResult != 0) {
 				shiftTimer += Time.deltaTime;
+				// ルームを閉じる
+				PhotonNetwork.room.open = false;
+				PhotonNetwork.room.visible = false;
 				// 5秒後に移動
 				if (shiftTimer > 5.0f) {
 					shiftTimer = 0.0f;
@@ -237,9 +251,15 @@ public class gameManage : Photon.PunBehaviour {
 					if (variableManage.myTeamID == variableManage.gameResult) {
 						// 自分のチームが勝利
 						variableManage.currentExp += Mathf.RoundToInt (variableManage.startTime * 0.4f);
+						if (variableManage.myWP < 5) {
+							variableManage.myWP += 1;
+						}
 					} else {
 						// 自分のチームが敗北
 						variableManage.currentExp += Mathf.RoundToInt (variableManage.startTime * 0.15f);
+						if (variableManage.myWP > -5) {
+							variableManage.myWP -= 1;
+						}
 					}
 					// データを保存してシーン移動
 					bool svChk = KiiManage.saveKiiData ();
@@ -253,8 +273,15 @@ public class gameManage : Photon.PunBehaviour {
 		}
 	}
 
+	// ロビーへ入室完了
 	public override void OnJoinedLobby () {
-		PhotonNetwork.JoinRandomRoom ();
+		// プレイヤーのプロパティの設定
+		myPlayerHash = new ExitGames.Client.Photon.Hashtable ();
+		myPlayerHash.Add ("lv", variableManage.currentLv);
+		myPlayerHash.Add ("wp", variableManage.myWP);
+		PhotonNetwork.SetPlayerCustomProperties (myPlayerHash);
+		// 入室処理
+		betterRoomSearch ();
 	}
 		
 	public override void OnFailedToConnectToPhoton (DisconnectCause cause) {
@@ -263,13 +290,21 @@ public class gameManage : Photon.PunBehaviour {
 		SceneManager.LoadScene ("mainMenu");
 	}
 
+	// ルームへの入室に失敗
+	public override void OnPhotonJoinRoomFailed (object[] codeAndMsg) {
+		base.OnPhotonJoinRoomFailed (codeAndMsg);
+		betterRoomSearch ();
+	}
+
 	public override void OnPhotonRandomJoinFailed (object[] codeAndMsg) {
 		Debug.Log ("Failed to Enter Room.");
 		myRoomHash = new ExitGames.Client.Photon.Hashtable ();
 		myRoomHash.Add ("time", 0);
+		myRoomHash.Add ("lv", variableManage.currentLv);
+		myRoomHash.Add ("wp", variableManage.myWP);
 		RoomOptions roomOptions = new RoomOptions ();
-		roomOptions.IsVisible = true;
-		roomOptions.IsOpen = true;
+		roomOptions.IsVisible = false;
+		roomOptions.IsOpen = false;
 		roomOptions.MaxPlayers = 8;
 		roomOptions.CustomRoomProperties = myRoomHash;
 		PhotonNetwork.CreateRoom (Random.Range(1.0f, 100.0f).ToString(), roomOptions, null);
@@ -294,20 +329,30 @@ public class gameManage : Photon.PunBehaviour {
 			int allocateNumber = 0;
 			GameObject[] team1Players = GameObject.FindGameObjectsWithTag ("Player");
 			GameObject[] team2Players = GameObject.FindGameObjectsWithTag ("enemy");
-			if ((team1Players.Length - 1) >= team2Players.Length) {
-				if (myTeamID == 1) {
-					allocateNumber = 2;
-				} else {
-					allocateNumber = 1;
-				}
+			if ((team1Players.Length - 1) > team2Players.Length) {
+				if (myTeamID == 1) allocateNumber = 2;
+				else allocateNumber = 1;
+				scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
+			} else if ((team1Players.Length - 1) < team2Players.Length) {
+				if (myTeamID == 1) allocateNumber = 1;
+				else allocateNumber = 2;
 				scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 			} else {
-				if (myTeamID == 1) {
-					allocateNumber = 1;
+				// 同数だった場合
+				float tmpRest = variableManage.team1Rest / variableManage.team2Rest;
+				float tmpBase = variableManage.base1Rest / variableManage.base2Rest;
+				float tmpValue = (tmpRest + tmpBase) * 0.5f;
+				if (tmpValue < 1.0f) {
+					// チーム１劣勢
+					if (myTeamID == 1) allocateNumber = 1;
+					else allocateNumber = 2;
+					scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 				} else {
-					allocateNumber = 2;
+					// チーム２劣勢
+					if (myTeamID == 1) allocateNumber = 2;
+					else allocateNumber = 1;
+					scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 				}
-				scenePV.RPC ("allocateTeam", newPlayer, allocateNumber);
 			}
 			// 現在の戦況を送信
 			scenePV.RPC(
@@ -318,6 +363,19 @@ public class gameManage : Photon.PunBehaviour {
 				variableManage.base1Rest,
 				variableManage.base2Rest
 			);
+			// ルームのプロパティを更新
+			int apLv = 0;
+			int apWp = 0;
+			foreach (PhotonPlayer player in PhotonNetwork.playerList) {
+				apLv += (int)player.customProperties["lv"];
+				apWp += (int)player.customProperties["wp"];
+			}
+			apLv = Mathf.RoundToInt (apLv / PhotonNetwork.room.playerCount);
+			apWp = Mathf.RoundToInt (apWp / PhotonNetwork.room.playerCount);
+			myRoomHash = PhotonNetwork.room.customProperties;
+			myRoomHash["lv"] = apLv;
+			myRoomHash["wp"] = apWp;
+			PhotonNetwork.room.SetCustomProperties (myRoomHash);
 		}
 	}
 
@@ -345,6 +403,61 @@ public class gameManage : Photon.PunBehaviour {
 					player.tag = "enemy";
 				}
 			}
+		}
+	}
+
+	// ルームを検索し、よい部屋があれば入室
+	void betterRoomSearch () {
+		if (PhotonNetwork.countOfRooms > 1) {
+			// 複数のルームがある場合、より自分のレベルと近い方へ入室
+			int bLv = 99;
+			int bWp = 10;
+			string roomName = "";
+			foreach (RoomInfo game in PhotonNetwork.GetRoomList ()) {
+				// 取得したルームからカスタムプロパティを抜き出す
+				int rWp = (int)game.customProperties["wp"];
+				int rLv = (int)game.customProperties["lv"];
+				if (rWp == variableManage.myWP) {
+					// 勝敗スコアが同一であればレベルを比較
+					if (rLv == variableManage.currentLv) {
+						// レベルも同一なら入室確定
+						roomName = game.name;
+						break;
+					} else {
+						// レベルが異なる場合、最も差が少ないルームへ入室
+						int tmpLv = Mathf.Abs (variableManage.currentLv - rLv);
+						if (bLv > tmpLv) {
+							bLv = tmpLv;
+							roomName = game.name;
+						}
+					}
+				} else {
+					// 勝敗スコアが異なる
+					int tmpWp = Mathf.Abs (variableManage.myWP - rWp);
+					if (bWp > tmpWp) {
+						bWp = tmpWp;
+						roomName = game.name;
+					}
+				}
+			}
+			// 入室
+			PhotonNetwork.JoinRoom (roomName);
+		} else if (PhotonNetwork.countOfRooms == 1) {
+			// ルームが一つしかない場合はそこに入室
+			PhotonNetwork.JoinRandomRoom ();
+		} else {
+			// ルームが存在しない場合は自分で作成
+			myRoomHash = new ExitGames.Client.Photon.Hashtable ();
+			myRoomHash.Add ("time", 0);
+			myRoomHash.Add ("lv", variableManage.currentLv);
+			myRoomHash.Add ("wp", variableManage.myWP);
+			RoomOptions roomOptions = new RoomOptions ();
+			roomOptions.IsVisible = false;
+			roomOptions.IsOpen = false;
+			roomOptions.MaxPlayers = 8;
+			roomOptions.CustomRoomProperties = myRoomHash;
+			PhotonNetwork.CreateRoom (Random.Range(1.0f, 100.0f).ToString(), roomOptions, null);
+			myTeamID = 1;
 		}
 	}
 

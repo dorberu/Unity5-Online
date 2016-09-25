@@ -139,6 +139,7 @@ public class UIbattle : MonoBehaviour {
 
 	//メインメニューへ戻る
 	public void returnMainMenu(){
+		PhotonNetwork.Disconnect ();
 		SceneManager.LoadScene ("mainMenu");
 	}
 
